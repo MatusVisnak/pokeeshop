@@ -6,8 +6,8 @@
       <div class="about-section">
         <div class="section-icon">🎮</div>
         <h2>Kto sme?</h2>
-        <p>Sme nadšenci Pokémon kariet a produktov s viac ako 5-ročnými skúsenosťami v tomto odvetví. Náš obchod ponúka najširší výber Pokémon TCG produktov na Slovensku.</p>
-        <p>Začali sme v roku 2020 ako malý rodinný obchod a dnes sme jedným z najväčších predajcov Pokémon produktov v regióne. Naša misia je priniesť radosť z Pokémon sveta každému fanúšikovi.</p>
+        <p>Sme nadšenci Pokémon kariet a produktov. Náš obchod ponúka najširší výber Pokémon TCG produktov na Slovensku.</p>
+        <p>Začali sme v roku 2025 ako malý obchod a náš cieľ je dostať sa na špičku Slovenského distribuovania Pokémonov. Naša misia je priniesť radosť z Pokémon sveta každému fanúšikovi.</p>
       </div>
 
       <div class="about-section">
@@ -76,7 +76,7 @@
             <span class="contact-icon">📍</span>
             <div>
               <strong>Adresa:</strong>
-              <p>Hlavná 123, 811 01 Bratislava, Slovensko</p>
+              <p>Mládeže 3, 953 01 Zlaté Moravce, Slovensko</p>
             </div>
           </div>
           
@@ -84,9 +84,12 @@
             <span class="contact-icon">🕐</span>
             <div>
               <strong>Otváracie hodiny:</strong>
-              <p>Pondelok - Piatok: 9:00 - 18:00</p>
-              <p>Sobota: 10:00 - 16:00</p>
-              <p>Nedeľa: Zatvorené</p>
+              <p>Pondelok - Piatok:</p> 
+              <p>9:00 - 17:00</p>
+              <p>Sobota: </p>
+              <p>8:00 - 12:00</p>
+              <p>Nedeľa: </p>
+              <p>Zatvorené</p>
             </div>
           </div>
         </div>

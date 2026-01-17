@@ -8,7 +8,7 @@
       <div v-if="product" class="product-detail">
         <div class="product-image-large">
           <img :src="product.image" :alt="product.name" @error="handleImageError">
-          <span v-if="product.featured" class="featured-badge">⭐ Vyzdvihnuté</span>
+          <span v-if="product.featured" class="featured-badge">⭐ Odporúčané</span>
           <span v-if="!product.inStock" class="out-of-stock-badge">❌ Vypredané</span>
         </div>
         

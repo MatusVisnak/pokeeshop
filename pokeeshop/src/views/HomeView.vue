@@ -12,7 +12,7 @@
 
     <div class="container">
       <section class="featured-section">
-        <h2 class="section-title">⭐ Vyzdvihnuté produkty</h2>
+        <h2 class="section-title">⭐ Odporúčané produkty</h2>
         <ProductList :products="featuredProducts" />
       </section>
 
