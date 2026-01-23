@@ -31,6 +31,33 @@
         </div>
         
         <div class="cart-summary">
+          <!-- FREE SHIPPING PROGRESS BAR -->
+          <div class="free-shipping-section">
+            <div v-if="cartSubtotal < 100" class="shipping-progress">
+              <div class="progress-header">
+                <span class="progress-icon">🚚</span>
+                <span class="progress-text">
+                  Do dopravy zadarmo Vám zostáva <strong>{{ formatPrice(100 - cartSubtotal) }}</strong>
+                </span>
+              </div>
+              <div class="progress-bar">
+                <div 
+                  class="progress-fill" 
+                  :style="{ width: shippingProgressPercent + '%' }"
+                ></div>
+              </div>
+              <div class="progress-info">
+                <span>{{ formatPrice(cartSubtotal) }}</span>
+                <span>100.00 €</span>
+              </div>
+            </div>
+            
+            <div v-else class="shipping-free">
+              <span class="free-icon">🎉</span>
+              <span class="free-text">Gratulujeme! Máte <strong>dopravu zadarmo</strong></span>
+            </div>
+          </div>
+
           <h3 class="summary-title">Súhrn objednávky</h3>
           
           <div class="summary-row">
@@ -40,7 +67,11 @@
           
           <div class="summary-row">
             <span>Doprava:</span>
-            <span>{{ formatPrice(shippingCost) }}</span>
+            <span v-if="shippingCost === 0" class="free-shipping-price">
+              <del style="color: #999; font-size: 0.9rem;">5.00 €</del> 
+              <strong style="color: #27ae60; margin-left: 8px;">ZADARMO</strong>
+            </span>
+            <span v-else>{{ formatPrice(shippingCost) }}</span>
           </div>
           
           <div class="summary-divider"></div>
@@ -97,13 +128,17 @@ export default {
     },
     
     shippingCost() {
-      const cartStore = useCartStore()
-      return cartStore.shippingCost
+      // Doprava zadarmo nad 100€
+      return this.cartSubtotal >= 100 ? 0 : 5.00
+    },
+    
+    shippingProgressPercent() {
+      // Percento progresívneho baru (0-100%)
+      return Math.min((this.cartSubtotal / 100) * 100, 100)
     },
     
     finalTotal() {
-      const cartStore = useCartStore()
-      return cartStore.finalTotal
+      return this.cartSubtotal + this.shippingCost
     }
   },
   
@@ -120,7 +155,7 @@ export default {
     },
     
     checkout() {
-      alert('Platobná brána nie je implementovaná v demo verzii. Ďakujeme za nákup!')
+      alert('Platby ešte nie sú pridané!')
     }
   }
 }
@@ -245,6 +280,75 @@ export default {
   height: fit-content;
   position: sticky;
   top: 100px;
+}
+
+/* FREE SHIPPING SECTION */
+.free-shipping-section {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+}
+
+.shipping-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-icon {
+  font-size: 1.5rem;
+}
+
+.progress-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #ffcb05;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  box-shadow: 0 2px 8px rgba(255, 203, 5, 0.4);
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.shipping-free {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 0;
+}
+
+.free-icon {
+  font-size: 2rem;
+}
+
+.free-text {
+  font-size: 1.05rem;
+  line-height: 1.4;
 }
 
 .summary-title {

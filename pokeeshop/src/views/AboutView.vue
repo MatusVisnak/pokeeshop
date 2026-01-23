@@ -29,7 +29,7 @@
           <div class="feature-card">
             <div class="feature-icon">💰</div>
             <h3>Najlepšie ceny</h3>
-            <p>Ponúkame konkurencieschopné ceny a pravidelné zľavy.</p>
+            <p>Ponúkame výborné ceny a pravidelné zľavy.</p>
           </div>
           
           <div class="feature-card">
@@ -47,7 +47,7 @@
           <div class="feature-card">
             <div class="feature-icon">🔄</div>
             <h3>Vrátenie tovaru</h3>
-            <p>Možnosť vrátenia do 14 dní bez udania důvodu.</p>
+            <p>Možnosť vrátenia do 14 dní bez udania dôvodu.</p>
           </div>
         </div>
       </div>
