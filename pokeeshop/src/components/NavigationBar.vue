@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar" :class="{ 'dark': isDarkMode }">
     <div class="nav-container">
       <RouterLink to="/" class="nav-logo">
         <h1>⚡ Pokémon Shop</h1>
@@ -23,6 +23,16 @@
             </span>
           </RouterLink>
         </li>
+        <!-- DARK MODE TOGGLE BUTTON -->
+        <li class="nav-item">
+          <button 
+            @click="toggleDarkMode" 
+            class="dark-mode-btn" 
+            :title="isDarkMode ? 'Prepnúť na svetlý režim' : 'Prepnúť na tmavý režim'"
+          >
+            {{ isDarkMode ? '☀️' : '🌙' }}
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -33,11 +43,24 @@ import { useCartStore } from '../stores/cartStore'
 
 export default {
   name: 'NavigationBar',
+
+  props: {
+    isDarkMode: {
+      type: Boolean,
+      default: false
+    }
+  },
   
   computed: {
     cartItemsCount() {
       const cartStore = useCartStore()
       return cartStore.cartItemsCount
+    }
+  },
+
+  methods: {
+    toggleDarkMode() {
+      this.$emit('toggle-dark-mode')
     }
   }
 }
@@ -51,6 +74,11 @@ export default {
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: all 0.3s;
+}
+
+.navbar.dark {
+  background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
 }
 
 .nav-container {
@@ -71,14 +99,20 @@ export default {
   margin: 0;
   font-size: 1.8rem;
   font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar.dark .nav-logo h1 {
+  color: #ffcb05;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .nav-item {
@@ -96,14 +130,27 @@ export default {
   display: inline-block;
 }
 
+.navbar.dark .nav-link {
+  color: #e0e0e0;
+}
+
 .nav-link:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
+.navbar.dark .nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .nav-link.router-link-active {
   background: #2c3e50;
   color: #ffcb05;
+}
+
+.navbar.dark .nav-link.router-link-active {
+  background: #ffcb05;
+  color: #2c3e50;
 }
 
 .cart-link {
@@ -124,9 +171,40 @@ export default {
   text-align: center;
 }
 
+/* DARK MODE BUTTON */
+.dark-mode-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(44, 62, 80, 0.2);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.navbar.dark .dark-mode-btn {
+  background: rgba(255, 203, 5, 0.2);
+  border-color: rgba(255, 203, 5, 0.3);
+}
+
+.dark-mode-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.15) rotate(20deg);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.navbar.dark .dark-mode-btn:hover {
+  background: rgba(255, 203, 5, 0.4);
+}
+
 @media (max-width: 768px) {
   .nav-menu {
-    gap: 1rem;
+    gap: 0.8rem;
   }
   
   .nav-link {
@@ -136,6 +214,12 @@ export default {
   
   .nav-logo h1 {
     font-size: 1.3rem;
+  }
+
+  .dark-mode-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
   }
 }
 </style>

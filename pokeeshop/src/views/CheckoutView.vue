@@ -272,16 +272,20 @@ export default {
     },
 
     processOrder() {
-      if (!this.formData.country) {
-        alert('Prosím, vyberte krajinu doručenia!')
-        return
-      }
+        if (!this.formData.country) {
+            if (window.$toast) {
+                window.$toast('Prosím, vyberte krajinu doručenia!', 'warning')
+            }
+            return
+        }
 
-      if (this.cartItems.length === 0) {
-        alert('Váš košík je prázdny!')
-        this.$router.push('/products')
-        return
-      }
+        if (this.cartItems.length === 0) {
+            if (window.$toast) {
+                window.$toast('Váš košík je prázdny!', 'error')
+            }
+            this.$router.push('/products')
+          return
+        }
 
       const order = {
         customer: { ...this.formData },
@@ -294,17 +298,9 @@ export default {
 
       console.log('Objednávka:', order)
 
-      alert(`✅ Objednávka úspešne odoslaná!
-
-Meno: ${this.formData.firstName} ${this.formData.lastName}
-Email: ${this.formData.email}
-Adresa: ${this.formData.address}, ${this.formData.city}
-Krajina: ${this.countryName}
-
-Celková suma: ${this.formatPrice(this.finalTotal)}
-
-Potvrdenie objednávky bude zaslané na ${this.formData.email}.
-Platba prebehne v hotovosti/kartou pri doručení kuriérom!`)
+      if (window.$toast) {
+        window.$toast(`Objednávka úspešne odoslaná! Informácie o objednávke Vám budú doručené na mail ${this.formData.email}`, 'success', 5000)
+      }
 
       const cartStore = useCartStore()
       cartStore.clearCart()

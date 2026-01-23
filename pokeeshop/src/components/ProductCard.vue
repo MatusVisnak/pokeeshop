@@ -2,7 +2,7 @@
   <div class="product-card">
     <div class="product-image">
       <img :src="product.image" :alt="product.name" @error="handleImageError">
-      <span v-if="product.featured" class="featured-badge">Odporúčané</span>
+      <span v-if="product.featured" class="featured-badge">Vyzdvihnuté</span>
       <span v-if="!product.inStock" class="out-of-stock-badge">Vypredané</span>
     </div>
     
@@ -62,7 +62,11 @@ export default {
     addToCart() {
       const cartStore = useCartStore()
       cartStore.addToCart(this.product)
-      alert(`${this.product.name} bol pridaný do košíka!`)
+      
+      // TOAST namiesto alert
+      if (window.$toast) {
+        window.$toast(`${this.product.name} bol pridaný do košíka! 🛒`, 'success')
+      }
     },
     
     handleImageError(event) {

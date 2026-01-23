@@ -139,7 +139,9 @@ export default {
     addToCart() {
       const cartStore = useCartStore()
       cartStore.addToCart(this.product)
-      alert(`${this.product.name} bol pridaný do košíka!`)
+      if (window.$toast) {
+        window.$toast(`${this.product.name} bol pridaný do košíka! 🛒`, 'success')
+      }
     },
     
     handleImageError() {
