@@ -155,7 +155,7 @@ export default {
     },
     
     checkout() {
-      alert('Platby ešte nie sú pridané!')
+      this.$router.push('/checkout')
     }
   }
 }
