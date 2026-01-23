@@ -4,7 +4,7 @@ import ProductsView from '../views/ProductsView.vue'
 import ProductDetailView from '../views/ProductDetailView.vue'
 import CartView from '../views/CartView.vue'
 import AboutView from '../views/AboutView.vue'
-
+import CheckoutView from '../views/CheckoutView.vue'
 const routes = [
   {
     path: '/',
@@ -21,6 +21,11 @@ const routes = [
     name: 'product-detail',
     component: ProductDetailView,
     props: true
+  },
+   {
+    path: '/checkout',
+    name: 'checkout',
+    component: CheckoutView
   },
   {
     path: '/cart',
