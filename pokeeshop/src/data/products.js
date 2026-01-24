@@ -4,7 +4,7 @@ export const products = [
     id: 1,
     name: "Funko POP Games: Pokémon - Pikachu",
     price: 24.99,
-    image: "/images/funkopikachu.jpg",
+    image: import.meta.env.BASE_URL + "/images/funkopikachu.jpg",
     category: "figurky",
     description: "Rozšír svoju Pokémon kolekciu o túto figúrku!",
     inStock: true,
