@@ -6,7 +6,7 @@
     </main>
     <footer class="footer">
       <p>&copy; 2025 Pokémon Shop. Všetky práva vyhradené.</p>
-      <p>Pokémon a všetky súvisiace značky sú ochranné známky spoločnosti Nintendo.</p>
+      <p>Pokémon a všetky súvisiace značky sú ochranné známky spoločnosti Pokémon.</p>
     </footer>
     
     <!-- TOAST NOTIFICATIONS -->
